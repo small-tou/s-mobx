@@ -10,7 +10,7 @@ class IndexItem extends BaseModel{
     @price('wy')
     price = 10;
     @distance('wkm')
-    mileage = 10
+    mileage = 10;
 }
 
 var item = new IndexItem();

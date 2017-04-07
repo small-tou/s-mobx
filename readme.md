@@ -55,3 +55,8 @@ class IndexItem extends BaseModel{
 
 export default  IndexItem;
 ```
+调用 JSON.stringify(new IndexItem()) 的结果：
+
+```
+"{\"title\":\"\",\"price\":\"1000000_$y\",\"mileage\":\"100000_$km\"}"
+```
