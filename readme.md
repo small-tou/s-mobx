@@ -24,7 +24,7 @@ babel需要配置以下插件才可使用。（react-native项目默认包含此
 
 此库解决的问题见文档：http://fedoc.sqaproxy.souche.com/common/yuanshuju.html
 
-在一个前端的model中这样使用：
+在一个前端的 Model 中这样使用：
 
 ```javascript
 /**
@@ -42,7 +42,7 @@ import {
     price
 } from '@souche-f2e/decorator_unit';
 
-class IndexItem extends BaseModel{
+class IndexModel extends BaseModel{
     title = '';
 
     @price('wy')
@@ -53,18 +53,19 @@ class IndexItem extends BaseModel{
 
 }
 
-export default  IndexItem;
-```
-调用 JSON.stringify(new IndexItem()) 的结果：
-
-```javascript
-{"title":"","price":"1000000_$y","mileage":"100000_$km"}
+export default  IndexModel;
 ```
 
-可以直接从json数据映射成model：
+```javascript
+const model = new IndexModel();
+console.log(JSON.stringify(model));
+// 输出 {"title":"","price":"1000000_$y","mileage":"100000_$km"}
+```
+
+可以直接从 json 数据映射成 Model：
 
 ```javascript
-var model = new IndexItem();
+var model = new IndexModel();
 model.parseJSON({
     title: '检测中心',
     price: '100000_$y',
