@@ -76,3 +76,7 @@ console.log(model.price) // 20
 JSON.stringify(model)
 // 输出 {"title":"","price":"200000_$y","mileage":"100000_$km"}
 ```
+
+## 注意
+
+后端如果没有标注一个字段是元数据（带有特殊后缀）此时在前端 Model 里标注单位，parseJSON的时候会报错。
