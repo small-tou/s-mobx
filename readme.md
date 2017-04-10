@@ -1,7 +1,7 @@
 
 ## 依赖
 
-`@souche-f2e/decorator`
+`@souche-f2e/decorator_unit`
 
 ## 前提
 
@@ -40,7 +40,7 @@ import {
     BaseModel,
     distance,
     price
-} from '@souche-f2e/decorator';
+} from '@souche-f2e/decorator_unit';
 
 class IndexItem extends BaseModel{
     title = '';

@@ -1,6 +1,6 @@
 {
-  "name": "@souche-f2e/decorator",
-  "version": "1.1.0",
+  "name": "@souche-f2e/decorator_unit",
+  "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
