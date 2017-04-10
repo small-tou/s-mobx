@@ -3,6 +3,8 @@
 
 `@souche-f2e/decorator_unit`
 
+此库兼容任何引入 babel 的前端项目和RN项目。
+
 ## 前提
 
 babel需要配置以下插件才可使用。（react-native项目默认包含此配置）
