@@ -22,6 +22,8 @@ babel需要配置以下插件才可使用。（react-native项目默认包含此
 
 ## 示例
 
+此库解决的问题见文档：http://fedoc.sqaproxy.souche.com/common/yuanshuju.html
+
 在一个前端的model中这样使用：
 
 ```
