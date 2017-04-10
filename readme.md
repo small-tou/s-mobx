@@ -31,7 +31,6 @@ babel需要配置以下插件才可使用。（react-native项目默认包含此
 * 此处标记会让 Model 初始化时把元数据转换成对应的单位
 * 序列化的时候会从标注的单位转换成元数据
 * 元数据的定义：价格到元，里程到里，时间到unix秒时间（待定）
-
 * 价格的枚举 wy（万元） y（元） f（分）
 * 里程的枚举 wkm（万公里）km（公里）m（米）
 * 时间的格式未定
@@ -58,5 +57,22 @@ export default  IndexItem;
 调用 JSON.stringify(new IndexItem()) 的结果：
 
 ```
-"{\"title\":\"\",\"price\":\"1000000_$y\",\"mileage\":\"100000_$km\"}"
+{"title":"","price":"1000000_$y","mileage":"100000_$km"}
+```
+
+可以直接从json数据映射成model：
+
+```
+var model = new IndexItem();
+model.parseJSON({
+    title: '检测中心',
+    price: '100000_$y',
+    distance: '100000_$km'
+});
+console.log(model.price) // 10
+console.log(model.distance) // 10
+model.price = 20;
+console.log(model.price) // 20
+JSON.stringify(model)
+// 输出 {"title":"","price":"200000_$y","mileage":"100000_$km"}
 ```
