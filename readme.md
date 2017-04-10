@@ -6,14 +6,14 @@
 ## 前提
 
 babel需要配置以下插件才可使用。（react-native项目默认包含此配置）
-```
+```javascript
 "plugins": [
   "transform-decorators-legacy",
   "transform-class-properties"
 ]
 ```
 项目需依赖：
-```
+```javascript
 "babel-plugin-transform-decorators-legacy": "*",
 "babel-plugin-transform-class-properties": "*", // rn 不需要
 "babel-preset-es2015": "*" // rn 不需要
@@ -26,7 +26,7 @@ babel需要配置以下插件才可使用。（react-native项目默认包含此
 
 在一个前端的model中这样使用：
 
-```
+```javascript
 /
 **
 * 注意两点：一个是需要继承自 BaseModel 二是标注属性的单位
@@ -58,13 +58,13 @@ export default  IndexItem;
 ```
 调用 JSON.stringify(new IndexItem()) 的结果：
 
-```
+```javascript
 {"title":"","price":"1000000_$y","mileage":"100000_$km"}
 ```
 
 可以直接从json数据映射成model：
 
-```
+```javascript
 var model = new IndexItem();
 model.parseJSON({
     title: '检测中心',
