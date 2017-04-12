@@ -1,41 +1,46 @@
 
 var setValue = function(value, type) {
-  if(/_\$km/.test(value)) {
+  var matches = (value + '').match(/([0-9.]*)_\$(.+)$/);
+  if(matches) {
     // 如果传进来的已经是元数据
     var v;
+    var server_distance = matches[1];
+    var unit = matches[2];
+    var real_km = 0;
+    switch (unit) {
+      case 'y':
+        real_km = server_distance * 1;
+        break;
+      case 'wy':
+        real_km = server_distance * 10000;
+        break;
+      case 'f':
+        real_km = server_distance / 10;
+        break;
+      default:
+        real_km = server_distance * 1;
+        break;
+    }
     switch(type) {
         case 'wkm':
-            v = new Number(value.replace('_$km','') / 10000);
+            v = new Number(real_km / 10000);
             break;
         case 'km':
-            v = new Number(value.replace('_$km','') * 1);
+            v = new Number(real_km * 1);
             break;
         case 'm':
-            v = new Number(value.replace('_$km','') * 1000);
+            v = new Number(real_km * 1000);
             break;
         default:
-            v = new Number(value.replace('_$km','') * 1);
+            v = new Number(real_km);
             break;
     }
-    v.jsonValue = value;
+    v.jsonValue = v + '_$' + type;
   } else {
     var v = new Number(value);
-    switch(type) {
-        case 'wkm':
-            v.jsonValue = v * 10000 + '_$km';
-            break;
-        case 'km':
-            v.jsonValue = v + '_$km';
-            break;
-        case 'm':
-            v.jsonValue = v / 1000 + '_$km';
-            break;
-        default:
-            v = v + '_$km';
-            break;
-    }
+    v.jsonValue = v + '_$' + type;
   }
-    return v;
+  return v;
 }
 
 export default function distance(type) {

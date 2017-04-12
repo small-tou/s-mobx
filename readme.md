@@ -7,14 +7,14 @@
 
 ## 前提
 
-babel需要配置以下插件才可使用。（react-native项目默认包含此配置）
+babel需要配置以下插件才可使用。（.babelrc，react-native项目默认包含此配置）
 ```javascript
 "plugins": [
   "transform-decorators-legacy",
   "transform-class-properties"
 ]
 ```
-项目需依赖：
+项目需依赖(package.json)：
 ```javascript
 "babel-plugin-transform-decorators-legacy": "*",
 "babel-plugin-transform-class-properties": "*", // rn 不需要
@@ -67,18 +67,26 @@ console.log(JSON.stringify(model));
 可以直接从 json 数据映射成 Model：
 
 ```javascript
-var model = new IndexModel();
+/**
+* 此结果表达的意思是，后端给前端任何单位，前端都会转成前端 model 里注解的单位。
+* 前端给后端的时候用的是 model 里注解的单位，后端拿到之后会转成后端 model 里注解的单位
+* 最后的结果是前端和后端自己都可以定义自己规范的单位，中间如何交换数据不需要关心，只需要在model里定义
+*/
+var model = new IndexModel()
 model.parseJSON({
     title: '检测中心',
     price: '100000_$y',
     distance: '100000_$km'
-});
+})
 console.log(model.price) // 10
 console.log(model.distance) // 10
-model.price = 20;
+model.price = 20
 console.log(model.price) // 20
 JSON.stringify(model)
-// 输出 {"title":"","price":"200000_$y","mileage":"100000_$km"}
+// 输出 {"title":"","price":"20_$wy","mileage":"10_$wkm"}
+model.price = '25_$wy'
+console.log(model.price) // 25
+
 ```
 
 ## 注意
