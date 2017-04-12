@@ -86,7 +86,13 @@ JSON.stringify(model)
 // 输出 {"title":"","price":"20_$wy","mileage":"10_$wkm"}
 model.price = '25_$wy'
 console.log(model.price) // 25
-
+model.parseJSON({
+    title: '检测中心2',
+    price: '15_$wy',
+    distance: '10000000_$m'
+})
+JSON.stringify(model)
+// 输出 {"title":"","price":"20_$wy","mileage":"1_$wkm"}
 ```
 
 ## 注意
