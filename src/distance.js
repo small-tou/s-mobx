@@ -8,14 +8,14 @@ var setValue = function(value, type) {
     var unit = matches[2];
     var real_km = 0;
     switch (unit) {
-      case 'y':
+      case 'km':
         real_km = server_distance * 1;
         break;
-      case 'wy':
+      case 'wkm':
         real_km = server_distance * 10000;
         break;
-      case 'f':
-        real_km = server_distance / 10;
+      case 'm':
+        real_km = server_distance / 1000;
         break;
       default:
         real_km = server_distance * 1;
