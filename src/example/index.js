@@ -1,18 +1,24 @@
-import {
-    BaseModel,
-    distance,
-    price
-} from './../index';
+import observerable from './../s-observerable.js';
+import autorun from './../s-autorun.js';
 
-class IndexItem extends BaseModel{
-
-    icon = '';
-    @price('wy')
-    price = 10;
-    @distance('wkm')
-    mileage = 10;
+var person = {
+  name:'1',
+  age:10,
+  componey:{
+    title:'xx'
+  }
 }
+person = observerable.create(person,{
+  childs:[1,2]
+});
 
-var item = new IndexItem();
+autorun(function(){
+  // person.name
+  // person.componey.title
+  // person.childs
+  console.log(person)
+})
 
-console.log(JSON.stringify(item))
+// person.name = 'name'
+// person.componey.title = 'title'
+person.childs.push(3)
