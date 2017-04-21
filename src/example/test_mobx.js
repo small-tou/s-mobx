@@ -1,11 +1,9 @@
 import {
   observable,
   autorun,
-  computed,
-  extendObservable
-} from './../s-mobx.js';
+  computed
+} from 'mobx';
 
-import manager from './../s-derivation-manager';
 class Person {
   @observable
   name = {
@@ -26,6 +24,7 @@ autorun(function(){
 })
 person.name.key.key = 3;
 person.name.key.key = 4;
+
 // var person = {
 //   name:'1',
 //   age:10,

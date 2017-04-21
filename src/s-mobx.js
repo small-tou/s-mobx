@@ -1,8 +1,10 @@
 
 import autorun from './s-autorun';
-import observerable from './s-observerable';
-
-export default {
+import {observable,computed} from './s-decorator';
+import extendObservable from './s-extendObservable.js'
+export {
   autorun,
-  observerable
+  observable,
+  computed,
+  extendObservable
 }

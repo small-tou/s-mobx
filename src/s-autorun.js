@@ -1,12 +1,10 @@
-import derivationManagers from './s-derivation-manager';
+import observerManagers from './s-observer-manager';
 
-var id = 1;
 const autorun = function(handler) {
-  derivationManagers.beginCollect(handler);
-  console.log('begin collect')
+  observerManagers.beginCollect(handler);
   handler();
-  console.log('end collect')
-  derivationManagers.endCollect();
+  observerManagers.endCollect();
+
 }
 
 export default autorun;
