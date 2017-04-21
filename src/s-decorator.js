@@ -1,8 +1,6 @@
 import Observable from './s-observable';
 import Computed from './s-computed';
 
-import {createObservable} from './s-extendObservable';
-
 function observable(target, name, descriptor) {
     var v = descriptor.initializer.call(this);
     // 如果值是对象，为其值也创建observable
