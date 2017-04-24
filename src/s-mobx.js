@@ -1,8 +1,12 @@
 
 import autorun from './s-autorun';
-import {observable,computed} from './s-decorator';
+import {observable,computed,observer} from './s-decorator';
+import {extendObservable,createObservable} from './s-extendObservable';
 export {
   autorun,
   observable,
-  computed
+  computed,
+  observer,
+  extendObservable,
+  createObservable
 }

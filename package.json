@@ -1,11 +1,12 @@
 {
-  "name": "@souche-f2e/decorator_unit",
-  "version": "1.0.4",
+  "name": "s-mobx",
+  "version": "1.1.2",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/s-mobx.js",
   "scripts": {
     "build": "webpack --config build/webpack.conf.js --progress --hide-modules",
-    "test": "npm run build;mocha lib/test/index.spec.js "
+    "test": "babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/index.js ",
+    "test-mobx":"babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/test_mobx.js "
   },
   "author": "",
   "license": "ISC",

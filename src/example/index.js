@@ -4,7 +4,6 @@ import {
   computed,
   extendObservable
 } from './../s-mobx.js';
-
 import manager from './../s-derivation-manager';
 class Person {
   @observable
@@ -13,10 +12,11 @@ class Person {
       key:1
     }
   };
-
+  title = 'xx';
   @computed get age() {
     return this.name.key.key;
   }
+
 }
 const person = new Person();
 

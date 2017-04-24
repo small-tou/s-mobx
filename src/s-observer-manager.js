@@ -1,5 +1,7 @@
 var nowObserver = null;
 var nowTarget = null;
+var observerStack = [];
+var targetStack = [];
 var isCollecting = false;
 const observerManagers = {
   _observers:{},
@@ -18,18 +20,27 @@ const observerManagers = {
     }
   },
   beginCollect(observer,target) {
+    console.log('begin collect',observer);
     isCollecting = true;
-    nowObserver = observer;
-    nowTarget = target||null;
+    observerStack.push(observer);
+    targetStack.push(target);
+    nowObserver = observerStack.length>0?observerStack[observerStack.length-1]:null;
+    nowTarget = targetStack.length>0?targetStack[targetStack.length-1]:null;
   },
   collect(proxyID){
-    if(isCollecting) {
+    if(nowObserver) {
+      console.log('collecting',proxyID)
       this._addNowObserver(proxyID);
     }
     return false;
   },
   endCollect(){
+    console.log('end collect');
     isCollecting = false;
+    observerStack.pop();
+    targetStack.pop();
+    nowObserver = observerStack.length>0?observerStack[observerStack.length-1]:null;
+    nowTarget = targetStack.length>0?targetStack[targetStack.length-1]:null;
   }
 }
 

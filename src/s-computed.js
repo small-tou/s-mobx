@@ -9,18 +9,31 @@ class Computed {
   func = null;
   target = null;
   obID = 0;
+  hasBindAutoReCompute = false;
   constructor(target,func){
     this.cpID = 'cp-'+(++cpIDCounter);
     this.target = target;
     this.func = func;
-    observerManagers.beginCollect(this.reCompute,this);
-    this.reCompute();
-    observerManagers.endCollect();
-  }
 
+  }
+  bindAutoReCompute() {
+    if(!this.hasBindAutoReCompute){
+      this.hasBindAutoReCompute = true;
+      // 当计算get中引用的值变化的时候要触发 this.reCompute
+      observerManagers.beginCollect(this.reCompute,this);
+      this.reCompute();
+      observerManagers.endCollect();
+    }
+  }
   get() {
+    // 供外部收集当前对象依赖的时候使用
+    this.bindAutoReCompute();
     observerManagers.collect(this.cpID);
     return this.value;
+  }
+
+  set(value) {
+    this.value = value;
   }
 
   /**
@@ -28,6 +41,7 @@ class Computed {
   */
   reCompute(){
     this.value = this.func.call(this.target);
+    // 触发外部依赖的observer
     observerManagers.trigger(this.cpID);
   }
 }
