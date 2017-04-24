@@ -10,7 +10,7 @@
 * autorun
 
 ## 标注 observable 以及 autorun 的用法
-```
+```javascript
 import {
   observable,
   autorun,
@@ -39,7 +39,7 @@ person.name.key.key = 4;
 ```
 ## 给React组件设置 observer
 
-```
+```javascript
 import {
   observer,
 } from 's-mobx';
