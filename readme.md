@@ -1,7 +1,7 @@
 
 ## 优势
 1. 兼容常用的mobx语法
-2. 打包后 6K，GZip后 2.3K
+2. 打包后 6K，GZip后 2.3K(mobx+mobx-react:71K,GZip 20.9K)
 
 ## 依赖
 
