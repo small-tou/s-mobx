@@ -5,6 +5,7 @@
 
 * @observable
 * @observer
+* @computed
 * extendObservable
 * createObservable
 * autorun
