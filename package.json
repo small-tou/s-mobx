@@ -5,8 +5,8 @@
   "main": "src/s-mobx.js",
   "scripts": {
     "build": "webpack --config build/webpack.conf.js --progress --hide-modules",
-    "test": "babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/index.js ",
-    "test-mobx": "babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/test_mobx.js "
+    "test": "babel src -d dist  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node dist/example/index.js ",
+    "test-mobx": "babel src -d dist  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node dist/example/test_mobx.js "
   },
   "author": "",
   "license": "ISC",

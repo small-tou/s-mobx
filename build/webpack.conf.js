@@ -6,7 +6,7 @@ module.exports = {
         main: './src/s-mobx.js'
     },
     output: {
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, '../release'),
         filename: 's-mobx.min.js'
     },
     resolve: {
