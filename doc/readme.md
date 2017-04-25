@@ -1,10 +1,10 @@
 # 前言
 
-mobx 是一个非常简单的状态管理库，具有相当大的自由度，并且使用非常简单，本文通过自己实现一个 mini 版的 mobx 来探究一下类似的 FRP 模式在 js 中的实现。
+mobx 是一个非常优雅的状态管理库，具有相当大的自由度，并且使用非常简单，本文通过自己实现一个 mini 版的 mobx （s-mobx）来探究一下类似的 FRP 模式在 js 中的实现。
 
 本文主要讲述了如何自己实现一个 mobx，主要是其核心几个 api 的实现。目的不是要重新造一个轮子，只是通过造轮子的过程，了解 mobx 的核心原理，以及一些具体实现的时候需要趟的坑，从而对RFP之类的编程范式有更深入的了解。
 
-所以，不要将此项目应用于项目中，除非你真的想节省那一点点带宽（打包后 6K，GZip后 2.3K），用此项目了解 mobx 的原理即可。
+所以，不要将此文中提到的项目（s-mobx）应用于实际项目中，除非你真的想节省那一点点带宽（打包后 6K，GZip后 2.3K）。
 
 另外，s-mobx 的实现和 mobx 的实现细节可能并不一致。
 
@@ -61,10 +61,12 @@ dependenceManager.endCollect();
 
 ### 在执行 handler 函数的时候，怎么知道他依赖了什么 observable 属性值的？
 
-这个是通过 observable 的 get 动作来实现的，每个被 observable 过的值在 get 的时候都会判断当前是否正在收集依赖，如果是的话，就会把这个值 和 当前正在收集依赖的 handler 关联起来存储在 dependenceManager 中。
+这个是通过 observable 的 get 动作来实现的，每个被 observable 过的值在执行 get 钩子的时候都会判断当前是否正在收集依赖，如果是的话，就会把这个值 和 当前正在收集依赖的 handler 关联起来存储在 dependenceManager 中。
 
+这就是整个 s-mobx 核心的原理：
 
-这就是整个 s-mobx 核心的原理。
+* observable 包装原生值，get 钩子收集依赖，set 钩子触发改变。
+* autorun 包装观察者函数，在包装时会提前执行一次，并且触发其中涉及到的 observable 值的 get 钩子收集依赖，将当前的观察者函数对应到每个 observable 值上。
 
 其他的代码大部分只是在实现如何包装 observable。
 

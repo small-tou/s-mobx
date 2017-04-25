@@ -36,7 +36,6 @@ babel需要配置以下插件才可使用。（.babelrc，react-native项目默�
 "babel-preset-es2015": "*" // rn 不需要
 ```
 
-
 ## 标注 observable 以及 autorun 的用法
 ```javascript
 import {
