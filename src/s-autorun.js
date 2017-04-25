@@ -1,10 +1,10 @@
-import observerManagers from './s-observer-manager';
+import dependenceManager from './s-dependence-manager';
 
 const autorun = function(handler) {
-  observerManagers.beginCollect(handler);
-  handler();
-  observerManagers.endCollect();
-
-}
+    //收集依赖
+    dependenceManager.beginCollect(handler);
+    handler();
+    dependenceManager.endCollect();
+};
 
 export default autorun;

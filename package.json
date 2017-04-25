@@ -6,16 +6,22 @@
   "scripts": {
     "build": "webpack --config build/webpack.conf.js --progress --hide-modules",
     "test": "babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/index.js ",
-    "test-mobx":"babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/test_mobx.js "
+    "test-mobx": "babel src -d lib  --plugins=transform-decorators-legacy,transform-class-properties --presets=es2015;node lib/example/test_mobx.js "
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.24.0",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.24.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
     "mobx": "^3.1.9",
     "mocha": "^2.5.3",
     "should": "^10.0.0",

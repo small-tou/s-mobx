@@ -1,0 +1,22 @@
+@startuml
+
+class Observable {
+ ~get() // 包装对象的值
+ ~set()
+ ~trigger() // 手动触发变化通知
+}
+class Computed {
+    ~get() // 获取当前computed的值
+}
+class Observer {
+
+}
+object decorator{
+    @observable
+    @computed
+    @observer
+}
+decorator  -->  Observable
+decorator  --> Computed
+decorator  --> Observer
+@enduml

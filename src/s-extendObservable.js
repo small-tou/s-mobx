@@ -2,42 +2,42 @@ import Observable from './s-observable';
 /**
 * 值类型 Observable
 */
-var createObservableProperty = function createObservableProperty(target, property) {
-  var observable = new Observable(target[property]);
-  Object.defineProperty(target, property, {
-    get: function get() {
-      return observable.get();
-    },
-    set: function set(value) {
-      return observable.set(value);
+const createObservableProperty = function createObservableProperty(target, property) {
+    const observable = new Observable(target[property]);
+    Object.defineProperty(target, property, {
+        get: function get() {
+            return observable.get();
+        },
+        set: function set(value) {
+            return observable.set(value);
+        }
+    });
+    //递归包装 observable
+    if(typeof (target[property]) === 'object') {
+        for(let i in target[property]) {
+            if(target[property].hasOwnProperty(i)) {
+                createObservableProperty(target[property], i);
+            }
+        }
     }
-  });
-
-  if (typeof(target[property]) === 'object') {
-    for (var i in target[property]) {
-      if (target[property].hasOwnProperty(i)) {
-        createObservableProperty(target[property], i);
-      }
-    }
-  }
 };
-var extendObservable = function extendObservable(target, obj) {
-  for (var i in obj) {
-    if (obj.hasOwnProperty(i)) {
-      target[i] = obj[i];
-      createObservableProperty(target, i);
+const extendObservable = function extendObservable(target, obj) {
+    for(let i in obj) {
+        if(obj.hasOwnProperty(i)) {
+            target[i] = obj[i];
+            createObservableProperty(target, i);
+        }
     }
-  }
 };
 
-var createObservable = function createObservable(target) {
-  for (var i in target) {
-    if (target.hasOwnProperty(i)) {
-      createObservableProperty(target, i);
+const createObservable = function createObservable(target) {
+    for(let i in target) {
+        if(target.hasOwnProperty(i)) {
+            createObservableProperty(target, i);
+        }
     }
-  }
 };
 export {
   extendObservable,
   createObservable
-}
+};
