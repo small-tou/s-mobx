@@ -1,6 +1,6 @@
 ## 原理解析
 
-[./doc/readme.md](如何自己实现一个mobx)
+[如何自己实现一个mobx](./doc/readme.md)
 
 ## 优势
 1. 兼容常用的mobx语法
