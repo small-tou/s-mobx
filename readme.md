@@ -10,7 +10,6 @@
 1. 兼容常用的mobx语法
 2. 打包后 6K，GZip后 2.3K(mobx+mobx-react:71K,GZip 20.9K)
 
-## 依赖
 
 目前兼容的mobx用法：
 
@@ -20,6 +19,23 @@
 * extendObservable
 * createObservable
 * autorun
+
+## 前提
+
+babel需要配置以下插件才可使用。（.babelrc，react-native项目默认包含此配置）
+```javascript
+"plugins": [
+  "transform-decorators-legacy",
+  "transform-class-properties"
+]
+```
+项目需依赖(package.json)：
+```javascript
+"babel-plugin-transform-decorators-legacy": "*",
+"babel-plugin-transform-class-properties": "*", // rn 不需要
+"babel-preset-es2015": "*" // rn 不需要
+```
+
 
 ## 标注 observable 以及 autorun 的用法
 ```javascript
