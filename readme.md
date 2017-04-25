@@ -2,6 +2,10 @@
 
 [如何自己实现一个mobx](./doc/readme.md)
 
+## 使用
+
+`npm install s-mobx --save`
+
 ## 优势
 1. 兼容常用的mobx语法
 2. 打包后 6K，GZip后 2.3K(mobx+mobx-react:71K,GZip 20.9K)
